@@ -1,0 +1,31 @@
+/* -----------------------
+  Includes
+------------------------ */
+//utils
+@import "fonts";
+@import "colors";
+@import "effects";
+//sections
+@import "home";
+@import "about";
+@import "search";
+
+/* -----------------------
+  Base
+ ------------------------ */
+body {
+  font-family: "ProximaNovaAltSemi";
+  color: $charcoal;
+}
+
+a {
+  color: $charcoal;
+  text-decoration: none;
+  font-weight: normal;
+  outline: none;
+  @include transition(color, .2s, ease-in);
+}
+
+a:hover {
+  color: $red;
+}

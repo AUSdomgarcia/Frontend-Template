@@ -1,0 +1,39 @@
+.sort-list a:hover,
+.sort-list a:active,
+.sort-list a:focus,
+.sort-list a.selected {
+  background-color: white;
+  @include rounded-corners(6px);
+  padding: 9px 8px;
+}
+
+.sort-list a.selected {
+  color: $red;
+}
+
+.sort-heading {
+  font-size: 12px;
+  padding-right: 10px;
+  color: $grey;
+}
+
+.search-results {
+  position: absolute;
+  left: 193px;
+  bottom: 15px;
+  font-size: 16px;
+  max-width: 500px;
+  word-wrap: break-word;
+  z-index: -2;
+}
+
+.search-results > em {
+  color: $red;
+}
+
+
+
+
+
+
+

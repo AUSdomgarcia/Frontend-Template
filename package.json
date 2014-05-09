@@ -1,0 +1,18 @@
+{
+  "name": "",
+  "version": "0.1.0",
+  "author": "Ian Pansensoy",
+  "copyright": "2014",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-copy": "*",
+    "load-grunt-tasks": "*",
+    "time-grunt": "*",
+    "grunt-contrib-clean": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
