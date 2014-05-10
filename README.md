@@ -1,4 +1,4 @@
-# Nuworks Front-End Template
+# Front End Template
 
 
 ## Features
