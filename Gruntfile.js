@@ -31,15 +31,26 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        processhtml: {
+            dist: {
+                files: {
+                    '<%= config.dist %>/index.html': ['<%= config.app %>/index.php']
+                }
+            }
+        },
+        uglify: {
+            dist: {
+                files: {
+                    '<%= config.dist %>/assets/js/app.min.js': ['<%= config.app %>/vendors/jquery/jquery.js', '<%= config.app %>/assets/js/*.js'] // make sure we load jQuery first
+                }
+            }
+        },
 
         // Task configuration.
         sass: {
             dist: {
                 files: {
-                    '<%= config.app %>/assets/css/main.css': '<%= config.app %>/assets/sass/main.scss'
-                },
-                options: {
-                    style: 'compressed'
+                    '<%= config.app %>/assets/css/styles.css': '<%= config.app %>/assets/sass/main.scss'
                 }
             }
         },
@@ -48,11 +59,20 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    flatten: false,
-                    cwd: '<%= config.app %>/assets/img/',
+                    cwd: '<%= config.app %>assets/img',
                     src: '{,*/}*.{gif,jpeg,jpg,png}',
-                    dest: '<%= config.dist %>/assets/img/'
+                    dest: '<%= config.dist %>assets/img'
                 }]
+            }
+        },
+        uncss: {
+            dist: {
+                files: {
+                    '<%= config.dist %>/assets/css/styles.css': ['app/index.php']
+                },
+                options: {
+                    report: 'min' // optional: include to report savings
+                }
             }
         },
         copy: {
@@ -66,20 +86,14 @@ module.exports = function(grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'assets/img/*',
-                        'assets/js/*.js',
                         'assets/fonts/{,*/}*.*',
                         'assets/css',
-                        'vendors/{,*/}*.*',
                         '{,*/}*.html'
                     ]
                 }]
             }
 
         },
-
-
-
-
 
 
     }); //end initConfig
@@ -92,6 +106,9 @@ module.exports = function(grunt) {
         'clean:dist',
         'sass',
         'imagemin',
+        'uglify',
+        'uncss',
+        'processhtml',
         'copy:dist'
 
     ]);

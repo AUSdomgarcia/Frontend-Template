@@ -10,7 +10,10 @@
     "grunt-contrib-copy": "*",
     "load-grunt-tasks": "*",
     "time-grunt": "*",
-    "grunt-contrib-clean": "*"
+    "grunt-contrib-clean": "*",
+    "grunt-uncss":"*",
+    "grunt-contrib-uglify": "*",
+    "grunt-processhtml":"*"
   },
   "engines": {
     "node": ">=0.10.0"
