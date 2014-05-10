@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "author": "Ian Pansensoy",
   "copyright": "2014",
+  "repository" :
+  { "type" : "git"
+  , "url" : "http://github.com:acidrainz/scaffolding.git"
+  },
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-sass": "*",
