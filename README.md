@@ -13,7 +13,7 @@
 ## Getting Started
 
 - Install: `npm install`
-- Run: `grunt` - To compile SASS
+- Run: `grunt` - To compile SASS and watch scss changes
 - Run `grunt build` for building dist copy
 
 
