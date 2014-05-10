@@ -8,16 +8,20 @@
   , "url" : "http://github.com:acidrainz/scaffolding.git"
   },
   "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-sass": "*",
-    "grunt-contrib-imagemin": "*",
-    "grunt-contrib-copy": "*",
-    "load-grunt-tasks": "*",
-    "time-grunt": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-uncss":"*",
-    "grunt-contrib-uglify": "*",
-    "grunt-processhtml":"*"
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-imagemin": "~0.7.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-contrib-compass": "~0.7.2",
+    "time-grunt": "~0.3.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-uncss": "~0.3.3",
+    "grunt-contrib-jshint":"~0.10.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-processhtml": "~0.3.3"
   },
   "engines": {
     "node": ">=0.10.0"

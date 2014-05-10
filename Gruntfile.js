@@ -18,6 +18,9 @@ module.exports = function(grunt) {
         config: config,
 
         banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '* Copyright (c) <%= grunt.template.today("yyyy") %> ',
+        jshint: {
+            all: ['Gruntfile.js', 'app/**/*.js']
+        },
         // Empties folders to start fresh
         clean: {
             dist: {
@@ -31,17 +34,35 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        cssmin: {
+            minify: {
+                expand: true,
+                cwd: '<%= config.app %>/assets/css/',
+                src: ['*.css', '!*.min.css'],
+                dest: '<%= config.dist %>/assets/css/',
+                ext: '.min.css'
+            }
+        },
+        compass: { // Task
+            dist: { // Target
+                options: { // Target options
+                    sassDir: '<%= config.app %>/assets/sass/',
+                    cssDir: '<%= config.app %>/assets/css/'
+                }
+            }
+        },
+
         processhtml: {
             dist: {
                 files: {
-                    '<%= config.dist %>/index.html': ['<%= config.app %>/index.php']
+                    '<%= config.dist %>/index.php': ['<%= config.app %>/index.php']
                 }
             }
         },
         uglify: {
             dist: {
                 files: {
-                    '<%= config.dist %>/assets/js/app.min.js': ['<%= config.app %>/vendors/jquery/jquery.js', '<%= config.app %>/assets/js/*.js'] // make sure we load jQuery first
+                    '<%= config.dist %>/assets/js/compiled.min.js': ['<%= config.app %>/vendors/jquery/jquery.js', '<%= config.app %>/assets/js/*.js'] // make sure we load jQuery first
                 }
             }
         },
@@ -50,7 +71,7 @@ module.exports = function(grunt) {
         sass: {
             dist: {
                 files: {
-                    '<%= config.app %>/assets/css/styles.css': '<%= config.app %>/assets/sass/main.scss'
+                    '<%= config.app %>/assets/css/main.css': '<%= config.app %>/assets/sass/main.scss'
                 }
             }
         },
@@ -68,11 +89,38 @@ module.exports = function(grunt) {
         uncss: {
             dist: {
                 files: {
-                    '<%= config.dist %>/assets/css/styles.css': ['app/index.php']
+                    '<%= config.dist %>/assets/css/main.css': ['app/index.php']
                 },
                 options: {
                     report: 'min' // optional: include to report savings
                 }
+            }
+        },
+        watch: {
+            options: {
+                dateFormat: function(time) {
+                    grunt.log.writeln('The watch finished in ' + time + 'ms at' + (new Date()).toString());
+                    grunt.log.writeln('Waiting for more changes...');
+                },
+                livereload: true
+            },
+            scripts: {
+                files: ['<%= config.app %>/assets/js/*.js'],
+                tasks: ['jshint'],
+                options: {
+                    spawn: false
+                }
+            },
+            css: {
+                files: '<%= config.app %>/assets/sass/*.scss',
+                tasks: ['sass', 'compass'],
+                options: {
+                    spawn: false
+                },
+            },
+            gruntfile: {
+                files: 'Gruntfile.js',
+                tasks: ['jshint'],
             }
         },
         copy: {
@@ -86,6 +134,7 @@ module.exports = function(grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'assets/img/*',
+                        'assets/js/*.js',
                         'assets/fonts/{,*/}*.*',
                         'assets/css',
                         '{,*/}*.html'
@@ -101,13 +150,14 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
 
     // Default task.
-    grunt.registerTask('default', ['sass']);
+    grunt.registerTask('default', ['sass', 'compass', 'watch']);
     grunt.registerTask('build', [
         'clean:dist',
         'sass',
         'imagemin',
         'uglify',
         'uncss',
+        'cssmin',
         'processhtml',
         'copy:dist'
 
