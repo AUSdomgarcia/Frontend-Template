@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
         banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '* Copyright (c) <%= grunt.template.today("yyyy") %> ',
         jshint: {
-            all: ['Gruntfile.js', 'app/**/*.js']
+            all: ['Gruntfile.js']
         },
         // Empties folders to start fresh
         clean: {
@@ -75,14 +75,13 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        imagemin: {
-            dist: {
+        imagemin: { // Task
+            dynamic: { // Another target
                 files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>assets/img',
-                    src: '{,*/}*.{gif,jpeg,jpg,png}',
-                    dest: '<%= config.dist %>assets/img'
+                    expand: true, // Enable dynamic expansion
+                    cwd: '<%= config.app %>/assets/img', // Src matches are relative to this path
+                    src: '**/*.{gif,GIF,jpg,JPG,png,PNG}', // Actual patterns to match
+                    dest: '<%= config.dist %>/assets/img/' // Destination path prefix
                 }]
             }
         },
@@ -103,13 +102,6 @@ module.exports = function(grunt) {
                     grunt.log.writeln('Waiting for more changes...');
                 },
                 livereload: true
-            },
-            scripts: {
-                files: ['<%= config.app %>/assets/js/*.js'],
-                tasks: ['jshint'],
-                options: {
-                    spawn: false
-                }
             },
             css: {
                 files: '<%= config.app %>/assets/sass/*.scss',
@@ -133,11 +125,10 @@ module.exports = function(grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'assets/img/*',
                         'assets/js/*.js',
                         'assets/fonts/{,*/}*.*',
                         'assets/css',
-                        '{,*/}*.html'
+                        '{,*/}*.php'
                     ]
                 }]
             }
