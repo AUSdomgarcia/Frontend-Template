@@ -47,7 +47,8 @@ module.exports = function(grunt) {
             dist: { // Target
                 options: { // Target options
                     sassDir: '<%= config.app %>/assets/sass/',
-                    cssDir: '<%= config.app %>/assets/css/'
+                    cssDir: '<%= config.app %>/assets/css/',
+                    config: 'config.rb'
                 }
             }
         },
