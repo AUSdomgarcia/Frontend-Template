@@ -21,14 +21,14 @@ module.exports = function(grunt) {
         jshint: {
             all: ['Gruntfile.js']
         },
+
         // Empties folders to start fresh
         clean: {
             dist: {
                 files: [{
                     dot: true,
                     src: [
-                        '.tmp',
-                        '<%= config.dist %>/*',
+                         '<%= config.dist %>/*',
                         '!<%= config.dist %>/.git*'
                     ]
                 }]
@@ -47,8 +47,7 @@ module.exports = function(grunt) {
             dist: { // Target
                 options: { // Target options
                     sassDir: '<%= config.app %>/assets/sass/',
-                    cssDir: '<%= config.app %>/assets/css/',
-                    config: 'config.rb'
+                    cssDir: '<%= config.app %>/assets/css/'
                 }
             }
         },
@@ -56,14 +55,15 @@ module.exports = function(grunt) {
         processhtml: {
             dist: {
                 files: {
-                    '<%= config.dist %>/index.php': ['<%= config.app %>/index.php']
+                    '<%= config.dist %>/index.html': ['<%= config.app %>/index.html']
                 }
             }
+
         },
         uglify: {
             dist: {
                 files: {
-                    '<%= config.dist %>/assets/js/compiled.min.js': ['<%= config.app %>/vendors/jquery/jquery.js', '<%= config.app %>/assets/js/*.js'] // make sure we load jQuery first
+                    '<%= config.dist %>/assets/js/app.min.js': ['<%= config.app %>/assets/js/*.js'] // make sure we load jQuery first
                 }
             }
         },
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         uncss: {
             dist: {
                 files: {
-                    '<%= config.dist %>/assets/css/main.css': ['app/index.php']
+                    '<%= config.dist %>/assets/css/main.min.css': ['app/index.html']
                 },
                 options: {
                     report: 'min' // optional: include to report savings
@@ -125,11 +125,11 @@ module.exports = function(grunt) {
                     dest: '<%= config.dist %>',
                     src: [
                         '*.{ico,png,txt}',
+                        'vendors/{,**/}*.*',
                         '.htaccess',
                         'assets/js/*.js',
                         'assets/fonts/{,*/}*.*',
-                        'assets/css',
-                        '{,*/}*.php'
+                        '{,*/}*.html'
                     ]
                 }]
             }
@@ -150,8 +150,8 @@ module.exports = function(grunt) {
         'uglify',
         'uncss',
         'cssmin',
+        'copy:dist',
         'processhtml',
-        'copy:dist'
 
     ]);
 
