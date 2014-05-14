@@ -1,27 +1,47 @@
-# generator-frontend-php [![Build Status](https://secure.travis-ci.org/bezoerb/generator-frontend-php.png?branch=master)](https://travis-ci.org/bezoerb/generator-frontend-php)
+# Frontend Template with Grunt Task Runner 
 
-A generator for [Yeoman](http://yeoman.io).
+Frontend Template on steroids
 
 
 ## Getting Started
+Grunt and Grunt plugins are installed and managed via npm, the Node.js package manager.
+Grunt 0.4.x requires stable Node.js versions >= 0.8.0. Odd version numbers of Node.js are considered unstable development versions.
 
-### What is Yeoman?
+##Installing the CLI
+If you're upgrading from Grunt 0.3, please see Grunt 0.3 Notes
 
-Trick question. It's not a thing. It's this guy:
+In order to get started, you'll want to install Grunt's command line interface (CLI) globally. You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this.
 
-![](http://i.imgur.com/JHaAlBJ.png)
+npm install -g grunt-cli
+This will put the grunt command in your system path, allowing it to be run from any directory.
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+Note that installing grunt-cli does not install the Grunt task runner! The job of the Grunt CLI is simple: run the version of Grunt which has been installed next to a Gruntfile. This allows multiple versions of Grunt to be installed on the same machine simultaneously.
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+
+##Install Dev Dependencies
+```
+$ npm install
 
 ```
-$ npm install -g yo
+###Watch SASS changes
+```
+$ grunt
+
+```
+###Build Release
+```
+$ grunt build
+
 ```
 
-### PHP Frontend Generator
+###Why use a task runner?
 
-Generate static html files using php with the power of that nice gentleman.
+In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.
+
+###Why use Grunt?
+The Grunt ecosystem is huge and it's growing every day. With literally hundreds of plugins to choose from, you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.
+
+### What can this do?
 
 * Local Connect web-server
 * Live reloading
@@ -39,45 +59,4 @@ Generate static html files using php with the power of that nice gentleman.
 * Custom Modernizr build
 
 
-To install generator-frontend-php from npm, run:
 
-```
-$ npm install -g generator-frontend-php
-```
-
-To make this work you need the `php-cgi` binaray in your PATH.
-
-Finally, initiate the generator:
-
-```
-$ yo frontend-php
-```
-
-
-### Installing php-cgi
-
-##### OSX
-
-The `php-cgi` binary can be installed via Homebrew by tapping the
-[homebrew-php](https://github.com/josegonzalez/homebrew-php) repository:
-
-```shell
-brew tap homebrew/dupes
-brew tap josegonzalez/homebrew-php
-brew install php54
-```
-
-##### Windows
-
-The `php-cgi` binary can be installed via [XAMPP](http://www.apachefriends.org/de/xampp-windows.html). 
-Here is how you can add the binary to your PATH: [Link](https://www.monosnap.com/image/psLZ5fpwuSsvJJeZPdklEjxMr)
-
-##### Ubuntu
-
-```shell
-sudo apt-get install php5-cgi
-```
-
-## License
-
-[MIT License](bezoerb.mit-license.org)
