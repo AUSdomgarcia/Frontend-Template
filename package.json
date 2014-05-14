@@ -1,11 +1,11 @@
 {
-  "name": "",
-  "version": "0.1.0",
+  "name": "Nuworks Interactive Inc. Front-end Template",
+  "version": "0.1.1",
   "author": "Ian Pansensoy",
   "copyright": "2014",
-  "repository" :
-  { "type" : "git"
-  , "url" : "http://github.com:acidrainz/scaffolding.git"
+   "repository" :
+  { "type" : "git",
+     "url" : "http://github.com:acidrainz/scaffolding.git"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -21,6 +21,7 @@
     "grunt-contrib-jshint":"~0.10.0",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-banner":"~0.2.2",
     "grunt-processhtml": "~0.3.3"
   },
   "engines": {
