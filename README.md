@@ -1,6 +1,23 @@
-# Frontend Template with Grunt Task Runner 
+# Frontend Template with Grunt
 
-Frontend Template on steroids
+Frontend development on steroids
+
+###Why use a task runner?
+
+In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.
+
+###Why use Grunt?
+The Grunt ecosystem is huge and it's growing every day. With literally hundreds of plugins to choose from, you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.
+
+### What can this do?
+
+
+* Compiling Sass
+* CSS and JS minification
+* Strip unused CSS with grunt-uncss
+* Image optimization
+
+
 
 
 ## Getting Started
@@ -33,30 +50,4 @@ $ grunt
 $ grunt build
 
 ```
-
-###Why use a task runner?
-
-In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.
-
-###Why use Grunt?
-The Grunt ecosystem is huge and it's growing every day. With literally hundreds of plugins to choose from, you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.
-
-### What can this do?
-
-* Local Connect web-server
-* Live reloading
-* HTML5 Boilerplate
-* Integration of PureCSS, Bootstrap or Foundation
-* Compiling PHP templates to HTML
-* Compiling Sass and Less
-* RequireJS
-* JS testing with Mocha, Qunit or Jasmine
-* Plato Reports
-* CSS and JS minification
-* Strip unused CSS with grunt-uncss
-* Image optimization
-* HTML and JS linting
-* Custom Modernizr build
-
-
 
