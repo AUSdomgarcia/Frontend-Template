@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nuworks Template</title>
+    <link href="vendors/bootstrap/css/bootstrap.css" rel="stylesheet">
    <!-- build:css css/main.css -->
-      <link href="vendors/bootstrap/css/bootstrap.css" rel="stylesheet">
-      <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
     <!-- /build -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,10 +56,11 @@
         </div>
 
 
-    <!-- build:js assets/js/app.min.js -->
-      <script src="vendors/jquery/jquery.js"></script>
-      <script src="vendors/bootstrap/js/bootstrap.js"></script>
-      <script src="assets/js/app.js"></script>
-    <!-- /build -->
+
+    <script src="vendors/jquery/jquery.js"></script>
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+     <!-- build:js assets/js/app.min.js -->
+          <script src="assets/js/app.js"></script>
+     <!-- /build -->
   </body>
 </html>
