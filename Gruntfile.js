@@ -17,7 +17,18 @@ module.exports = function(grunt) {
         // Project settings
         config: config,
 
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '* Copyright (c) <%= grunt.template.today("yyyy") %> ',
+        banner: '/*\n<%= pkg.name %> - v<%= pkg.version %>\n'+'Authored by:<%= pkg.author %>\n' +'Website: https://aindevonshire.com ' +'\nCopyright (c) <%= grunt.template.today("yyyy") %>\n */',
+        usebanner: {
+            dist: {
+              options: {
+                position: 'top',
+                banner: '<%= banner %>'
+              },
+              files: {
+                src: [ '<%= config.dist %>/assets/js/app.min.js', '<%= config.dist %>/assets/css/main.min.css' ]
+              }
+            }
+        },
         jshint: {
             all: ['Gruntfile.js']
         },
@@ -27,9 +38,9 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     dot: true,
+                    expand  :true,
                     src: [
-                         '<%= config.dist %>/*',
-                        '!<%= config.dist %>/.git*'
+                         '<%= config.dist %>/*'
                     ]
                 }]
             }
@@ -127,7 +138,6 @@ module.exports = function(grunt) {
                         '*.{ico,png,txt}',
                         'vendors/{,**/}*.*',
                         '.htaccess',
-                        'assets/js/*.js',
                         'assets/fonts/{,*/}*.*',
                         '{,*/}*.html'
                     ]
@@ -152,6 +162,7 @@ module.exports = function(grunt) {
         'cssmin',
         'copy:dist',
         'processhtml',
+        'usebanner'
 
     ]);
 
