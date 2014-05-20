@@ -2,6 +2,8 @@
   Includes
 ------------------------ */
 
+@import "social-icons/*.png";
+@include all-social-icons-sprites;
 //utils
 @import "fonts";
 @import "colors";

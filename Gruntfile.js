@@ -59,16 +59,14 @@ module.exports = function(grunt) {
                 options: {
                     sassDir: '<%= config.app %>/assets/sass/',
                     cssDir: '<%= config.app %>/assets/css/',
+                    imagesDir: '<%= config.app %>/assets/img/',
+                    javascriptsDir: '<%= config.app %>/assets/js/',
+                    fontsDir: '<%= config.app %>/assets/fonts/',
+                    relativeAssets: true,
                     environment: 'development'
                 }
-            },
-            dist: { // Target
-                options: { // Target options
-                    sassDir: '<%= config.app %>/assets/sass/',
-                    cssDir: '<%= config.dist %>/assets/css/',
-                    environment: 'production'
-                }
             }
+
         },
 
         processhtml: {
@@ -142,9 +140,9 @@ module.exports = function(grunt) {
                     dot: true,
                     cwd: '<%= config.app %>',
                     dest: '<%= config.dist %>',
-                   src: [
+                    src: [
                         '*.{ico,png,txt}',
-                       '.htaccess',
+                        '.htaccess',
                         'assets/fonts/{,**/}*.*',
                         'assets/vendors/{,**/}*.*',
                         '{,*/}*.html'
@@ -160,10 +158,10 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
 
     // Default task.
-    grunt.registerTask('default', ['compass:dev', 'watch']);
+    grunt.registerTask('default', ['compass', 'watch']);
     grunt.registerTask('build', [
         'clean:dist',
-        'compass:dist',
+        'compass',
         'imagemin',
         'uglify',
         'uncss',
