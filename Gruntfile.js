@@ -17,16 +17,16 @@ module.exports = function(grunt) {
         // Project settings
         config: config,
 
-        banner: '/*\n<%= pkg.name %> - v<%= pkg.version %>\n'+'Authored by:<%= pkg.author %>\n' +'Website: https://aindevonshire.com ' +'\nCopyright (c) <%= grunt.template.today("yyyy") %>\n */',
+        banner: '/*\n<%= pkg.name %> - v<%= pkg.version %>\n' + 'Authored by:<%= pkg.author %>\n' + 'Website: https://aindevonshire.com ' + '\nCopyright (c) <%= grunt.template.today("yyyy") %>\n */',
         usebanner: {
             dist: {
-              options: {
-                position: 'top',
-                banner: '<%= banner %>'
-              },
-              files: {
-                src: [ '<%= config.dist %>/assets/js/app.min.js', '<%= config.dist %>/assets/css/main.min.css' ]
-              }
+                options: {
+                    position: 'top',
+                    banner: '<%= banner %>'
+                },
+                files: {
+                    src: ['<%= config.dist %>/assets/js/app.min.js', '<%= config.dist %>/assets/css/main.min.css']
+                }
             }
         },
         jshint: {
@@ -38,9 +38,9 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     dot: true,
-                    expand  :true,
+                    expand: true,
                     src: [
-                         '<%= config.dist %>/*'
+                        '<%= config.dist %>/*'
                     ]
                 }]
             }
@@ -55,10 +55,18 @@ module.exports = function(grunt) {
             }
         },
         compass: { // Task
+            dev: {
+                options: {
+                    sassDir: '<%= config.app %>/assets/sass/',
+                    cssDir: '<%= config.app %>/assets/css/',
+                    environment: 'development'
+                }
+            },
             dist: { // Target
                 options: { // Target options
                     sassDir: '<%= config.app %>/assets/sass/',
-                    cssDir: '<%= config.app %>/assets/css/'
+                    cssDir: '<%= config.dist %>/assets/css/',
+                    environment: 'production'
                 }
             }
         },
@@ -134,11 +142,11 @@ module.exports = function(grunt) {
                     dot: true,
                     cwd: '<%= config.app %>',
                     dest: '<%= config.dist %>',
-                    src: [
+                   src: [
                         '*.{ico,png,txt}',
-                        'vendors/{,**/}*.*',
-                        '.htaccess',
-                        'assets/fonts/{,*/}*.*',
+                       '.htaccess',
+                        'assets/fonts/{,**/}*.*',
+                        'assets/vendors/{,**/}*.*',
                         '{,*/}*.html'
                     ]
                 }]
@@ -152,10 +160,10 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
 
     // Default task.
-    grunt.registerTask('default', ['sass', 'compass', 'watch']);
+    grunt.registerTask('default', ['compass:dev', 'watch']);
     grunt.registerTask('build', [
         'clean:dist',
-        'sass',
+        'compass:dist',
         'imagemin',
         'uglify',
         'uncss',
