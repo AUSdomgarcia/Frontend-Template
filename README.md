@@ -12,7 +12,7 @@ The Grunt ecosystem is huge and it's growing every day. With literally hundreds 
 ### What can this do?
 
 
-* Compiling Sass
+* Compiling Compass/Sass
 * CSS and JS minification
 * Strip unused CSS with grunt-uncss
 * Image optimization
@@ -40,7 +40,7 @@ Note that installing grunt-cli does not install the Grunt task runner! The job o
 $ npm install
 
 ```
-###Watch SASS changes
+###Watch COMPASS/SASS changes
 ```
 $ grunt
 
