@@ -1,6 +1,7 @@
 {
-  "name": "",
-  "version": "0.1.1",
+  "name": "Front-End Template with Grunt",
+  "description": "Performing repetitive tasks like minification, compilation, unit testing, linting, making your job easier.",
+  "version": "0.1.3",
   "author": "Ian Pansensoy",
   "copyright": "2014",
    "repository" :
