@@ -69,10 +69,22 @@ module.exports = function(grunt) {
 
         },
 
+        less: {
+             development: {
+                     options: {
+                         paths: ["<%= config.app %>/assets/css"]
+                     },
+                 files: {"<%= config.app %>/assets/css/main.css":"<%= config.app %>/assets/less/main.less"}
+             }
+        },
+
         processhtml: {
             dist: {
                 files: {
-                    '<%= config.dist %>/index.html': ['<%= config.app %>/index.html']
+                    '<%= config.dist %>/index.php':  ['<%= config.app %>/index.php'],
+                    '<%= config.dist %>/footer.php': ['<%= config.app %>/footer.php'],
+                    '<%= config.dist %>/header.php': ['<%= config.app %>/header.php'],
+
                 }
             }
 
@@ -106,7 +118,7 @@ module.exports = function(grunt) {
         uncss: {
             dist: {
                 files: {
-                    '<%= config.dist %>/assets/css/main.min.css': ['app/index.html']
+                    '<%= config.dist %>/assets/css/main.min.css': ['app/*.php']
                 },
                 options: {
                     report: 'min' // optional: include to report savings
@@ -121,12 +133,19 @@ module.exports = function(grunt) {
                 },
                 livereload: true
             },
-            css: {
+            comp: {
                 files: '<%= config.app %>/assets/sass/*.scss',
                 tasks: ['sass', 'compass'],
                 options: {
                     spawn: false
-                },
+                }
+            },
+            lss: {
+                files: '<%= config.app %>/assets/less/*.less',
+                tasks: ['less'],
+                options: {
+                    spawn: false
+                }
             },
             gruntfile: {
                 files: 'Gruntfile.js',
@@ -145,7 +164,8 @@ module.exports = function(grunt) {
                         '.htaccess',
                         'assets/fonts/{,**/}*.*',
                         'assets/vendors/{,**/}*.*',
-                        '{,*/}*.html'
+                        '{,*/}*.html',
+                        '{,*/}*.php'
                     ]
                 }]
             }
@@ -158,11 +178,23 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
 
     // Default task.
-    grunt.registerTask('default', ['compass', 'watch']);
-    grunt.registerTask('build', [
+    grunt.registerTask('default', ['less','watch','compass']);
+    grunt.registerTask('build-sass', [
         'clean:dist',
-        'compass',
         'imagemin',
+        'compass',
+        'uglify',
+        'uncss',
+        'cssmin',
+        'copy:dist',
+        'processhtml',
+        'usebanner'
+
+    ]);
+    grunt.registerTask('build-less', [
+        'clean:dist',
+        'imagemin',
+        'less',
         'uglify',
         'uncss',
         'cssmin',

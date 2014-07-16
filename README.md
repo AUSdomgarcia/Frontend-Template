@@ -1,4 +1,4 @@
-# Frontend Template with Grunt
+﻿# Frontend Template with Grunt
 
 Frontend development on steroids
 
@@ -13,6 +13,7 @@ The Grunt ecosystem is huge and it's growing every day. With literally hundreds 
 
 
 * Compiling Compass/Sass
+* Compiling LESS
 * CSS and JS minification
 * Strip unused CSS with grunt-uncss
 * Image optimization
@@ -71,14 +72,16 @@ Go and play. If you're brand new to Sass we've set up some resources to help you
 $ npm install
 
 ```
-###Watch COMPASS/SASS changes
+###Watch COMPASS/SASS/LESS FILE CHANGE
 ```
 $ grunt
 
 ```
 ###Build Release
 ```
-$ grunt build
+$ grunt build-sass  for sass builds
+$ grunt build-less  for less builds
+
 
 ```
 
